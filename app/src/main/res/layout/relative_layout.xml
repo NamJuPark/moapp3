@@ -5,12 +5,28 @@
     android:layout_height="match_parent">
 
     <Button
+        android:text="기준"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/b"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
         android:text="Button7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/b"
         android:layout_toRightOf="@id/b"
         android:id="@+id/button7" />
+
+    <Button
+        android:text="Button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/b"
+        android:layout_alignRight="@+id/b"
+        android:id="@+id/button5" />
 
     <Button
         android:text="Button6"
@@ -20,13 +36,6 @@
         android:layout_toRightOf="@id/button5"
         android:id="@+id/button6" />
 
-    <Button
-        android:text="Button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/b"
-        android:layout_alignRight="@+id/b"
-        android:id="@+id/button5" />
 
     <Button
         android:text="Button4"
@@ -60,11 +69,4 @@
         android:layout_toLeftOf="@+id/b"
         android:id="@+id/button1" />
 
-    <Button
-        android:text="기준"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:id="@+id/b"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
 </RelativeLayout>
