@@ -24,45 +24,137 @@
         android:layout_height="wrap_content">
 
         <Switch
-            android:text="Switch"
+            android:text="시작함"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/switch1"
              />
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
         <TextView
-            android:text="예약시작 경과시간 00:00"
+            android:text="예약시작 경과시간 : "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
-            android:layout_weight="1"
             android:visibility="invisible"
             android:textColor="#3563fa"
+            />
+
+        <Chronometer
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chronometer"
+            android:layout_weight="1"
+            android:visibility="invisible"
             />
 
     </LinearLayout>
 
     <FrameLayout
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="380dp"
         android:background="#f69c9c">
 
-        <DatePicker
+        <FrameLayout
+            android:visibility="invisible"
+            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/datePicker" />
+            android:layout_height="match_parent"
+           >
 
-        <CalendarView
-            android:layout_gravity="bottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/calendarView" />
+            <DatePicker
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/datePicker" />
 
-        <TimePicker
+            <CalendarView
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/calendarView" />
+
+        </FrameLayout>
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="103dp"
-            android:id="@+id/timePicker"
-            android:visibility="invisible"/>
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+           >
+
+            <TimePicker
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/timePicker"
+               />
+
+
+        </FrameLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="2"
+            android:rowCount="3">
+
+            <TextView
+                android:text="성인"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView10"
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="인원수 입력"
+                android:ems="10"
+                android:id="@+id/editText9" />
+
+            <TextView
+                android:text="청소년"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView9" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="인원수 입력"
+                android:ems="10"
+                android:id="@+id/editText10" />
+
+            <TextView
+                android:text="어린이"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView8" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:hint="인원수 입력"
+                android:id="@+id/editText11" />
+
+        </GridLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+
+
+        </FrameLayout>
 
     </FrameLayout>
 
@@ -72,16 +164,18 @@
         android:layout_height="wrap_content">
 
     <Button
-        android:text="Button"
-        android:layout_width="match_parent"
+        android:text="이전"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button1" />
+        android:id="@+id/bPrev" />
 
     <Button
-        android:text="Button"
-        android:layout_width="match_parent"
+        android:text="다음"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button2" />
+        android:id="@+id/bNext" />
 
     </LinearLayout>
 
