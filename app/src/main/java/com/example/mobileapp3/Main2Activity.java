@@ -1,5 +1,6 @@
 package com.example.mobileapp3;
 
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -68,6 +69,7 @@ public class Main2Activity extends AppCompatActivity {
                     layout.setVisibility(View.VISIBLE);
                     layout1.setVisibility(View.VISIBLE);
                     layout_button.setVisibility(View.VISIBLE);
+                    next.setEnabled(true);
                     reserve.setVisibility(View.VISIBLE);
                     chronometer.start();
                     chronometer.setVisibility(View.VISIBLE);
@@ -80,9 +82,12 @@ public class Main2Activity extends AppCompatActivity {
                     layout3.setVisibility(View.INVISIBLE);
                     layout4.setVisibility(View.INVISIBLE);
                     layout_button.setVisibility(View.INVISIBLE);
-                    resetcalander();
-                    layout4_init();
+                    reserve.setVisibility(View.INVISIBLE);
+                    chronometer.setBase(SystemClock.elapsedRealtime());
+                    chronometer.setVisibility(View.INVISIBLE);
+                    layout1_2_init();
                     layout3_init();
+                    layout4_init();
 
                 }
             }
@@ -136,12 +141,29 @@ public class Main2Activity extends AppCompatActivity {
         }
     }
 
-    private void layout3_init() {
+    public void layout1_2_init()
+    {
+        Calendar cal;
+        cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int min = cal.get(Calendar.MINUTE);
+        dp.updateDate(year,month,day);
+        tp.setCurrentHour(hour);
+        tp.setCurrentMinute(min);
+
 
     }
 
+    private void layout3_init() {
+        e1.setText(null);
+        e2.setText(null);
+        e3.setText(null);
+    }
 
-    public void layout4_init() {
+    private void layout4_init() {
         t_date.setText("년/월/일");
         t_time.setText("시/분" );
         t_adult.setText("명");
@@ -163,18 +185,6 @@ public class Main2Activity extends AppCompatActivity {
         num_child = Integer.parseInt(e3.getText().toString());
     }
 
-    public void resetcalander()
-    {
-        Calendar cal;
-        cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        int hour = cal.get(Calendar.HOUR_OF_DAY);
-        int min = cal.get(Calendar.MINUTE);
-        dp.updateDate(year,month,day);
-        tp.setCurrentHour(hour);
-        tp.setCurrentMinute(min);
-    }
+
 
 }
