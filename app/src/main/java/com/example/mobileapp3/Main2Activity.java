@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -14,18 +15,21 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.util.Calendar;
+
 public class Main2Activity extends AppCompatActivity {
     Switch sStart;
-    int layoutNum;
+    int layoutNum,num_adult, num_mid, num_child;
     FrameLayout layout,layout1,layout2;
     GridLayout layout3,layout4;
-    LinearLayout layout5;
+    LinearLayout layout_button;
     DatePicker dp;
     TimePicker tp;
     Button prev, next;
     EditText e1,e2,e3;
-    TextView t_date,t_time,t_adult,t_mid,t_child;
-    int num_adult, num_mid, num_child;
+    TextView t_date,t_time,t_adult,t_mid,t_child,reserve;
+    Chronometer chronometer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +42,7 @@ public class Main2Activity extends AppCompatActivity {
         layout2 = (FrameLayout) findViewById(R.id.layout2);
         layout3 = (GridLayout) findViewById(R.id.layout3);
         layout4 = (GridLayout) findViewById(R.id.layout4);
-        layout5 = (LinearLayout)findViewById(R.id.Linearlayout5);
+        layout_button = (LinearLayout)findViewById(R.id.Linearlayout5);
         dp = (DatePicker) findViewById(R.id.datePicker);
         tp = (TimePicker)findViewById(R.id.timePicker);
         prev = (Button) findViewById(R.id.bPrev);
@@ -51,17 +55,36 @@ public class Main2Activity extends AppCompatActivity {
         t_adult = (TextView)findViewById(R.id.textView17);
         t_mid = (TextView)findViewById(R.id.textView19);
         t_child = (TextView)findViewById(R.id.textView21);
+        reserve = (TextView)findViewById(R.id.textView2);
+        chronometer = (Chronometer)findViewById(R.id.chronometer);
+
 
 
 
         sStart.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                layout.setVisibility(View.VISIBLE);
-                layout1.setVisibility(View.VISIBLE);
-                layout5.setVisibility(View.VISIBLE);
-                layoutNum = 1;
+                if(sStart.isChecked()){
+                    layout.setVisibility(View.VISIBLE);
+                    layout1.setVisibility(View.VISIBLE);
+                    layout_button.setVisibility(View.VISIBLE);
+                    reserve.setVisibility(View.VISIBLE);
+                    chronometer.start();
+                    chronometer.setVisibility(View.VISIBLE);
+                    layoutNum = 1;
+                }
+                else {
+                    layout.setVisibility(View.INVISIBLE);
+                    layout1.setVisibility(View.INVISIBLE);
+                    layout2.setVisibility(View.INVISIBLE);
+                    layout3.setVisibility(View.INVISIBLE);
+                    layout4.setVisibility(View.INVISIBLE);
+                    layout_button.setVisibility(View.INVISIBLE);
+                    resetcalander();
+                    layout4_init();
+                    layout3_init();
 
+                }
             }
         });
     }
@@ -113,8 +136,21 @@ public class Main2Activity extends AppCompatActivity {
         }
     }
 
+    private void layout3_init() {
+
+    }
+
+
+    public void layout4_init() {
+        t_date.setText("년/월/일");
+        t_time.setText("시/분" );
+        t_adult.setText("명");
+        t_mid.setText("명");
+        t_child.setText("명");
+    }
+
     public void print() {
-        t_date.setText(dp.getYear() + "년/" + dp.getMonth()+ "월/" + dp.getDayOfMonth()+"일");
+        t_date.setText(dp.getYear() + "년/" + (dp.getMonth()+1)+ "월/" + dp.getDayOfMonth()+"일");
         t_time.setText(tp.getCurrentHour() + "시/" + tp.getCurrentMinute() +"분" );
         t_adult.setText(num_adult+"명");
         t_mid.setText(num_mid+"명");
@@ -127,5 +163,18 @@ public class Main2Activity extends AppCompatActivity {
         num_child = Integer.parseInt(e3.getText().toString());
     }
 
+    public void resetcalander()
+    {
+        Calendar cal;
+        cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int min = cal.get(Calendar.MINUTE);
+        dp.updateDate(year,month,day);
+        tp.setCurrentHour(hour);
+        tp.setCurrentMinute(min);
+    }
 
 }
