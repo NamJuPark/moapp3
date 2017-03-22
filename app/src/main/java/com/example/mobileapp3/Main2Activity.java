@@ -70,6 +70,7 @@ public class Main2Activity extends AppCompatActivity {
                     layout1.setVisibility(View.VISIBLE);
                     layout_button.setVisibility(View.VISIBLE);
                     next.setEnabled(true);
+                    prev.setEnabled(false);
                     reserve.setVisibility(View.VISIBLE);
                     chronometer.start();
                     chronometer.setVisibility(View.VISIBLE);
